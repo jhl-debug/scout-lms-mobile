@@ -5,7 +5,6 @@ import {
     Text,
     StyleSheet,
     TouchableOpacity,
-    SafeAreaView,
     TextInput,
     Alert,
     KeyboardAvoidingView,
@@ -14,12 +13,14 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { Colors, Spacing, Typography } from '../../constants/Colors';
 import { useAuth } from '../../hooks/useAuth';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 
 interface SignInScreenProps {
     navigation: any;
 }
 
 export default function SignInScreen({ navigation }: SignInScreenProps) {
+    const insets = useSafeAreaInsets();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
@@ -42,7 +43,7 @@ export default function SignInScreen({ navigation }: SignInScreenProps) {
     };
 
     return (
-        <SafeAreaView style={styles.container}>
+        <View style={[styles.container, { paddingTop: insets.top }]}>
             <LinearGradient
                 colors={[Colors.primaryLight, Colors.primary, Colors.primaryDark]}
                 start={{ x: 0, y: 0 }}
@@ -124,7 +125,7 @@ export default function SignInScreen({ navigation }: SignInScreenProps) {
                     </View>
                 </KeyboardAvoidingView>
             </LinearGradient>
-        </SafeAreaView>
+        </View>
     );
 }
 
