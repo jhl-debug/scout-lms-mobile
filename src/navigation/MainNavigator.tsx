@@ -1,26 +1,19 @@
 // src/navigation/MainNavigator.tsx
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeScreen from '../screens/home/HomeScreen';
+import HomeNavigator from './HomeNavigator';
+import CourseNavigator from './CourseNavigator';
 import { Colors, Typography } from '../constants/Colors';
 import { MainTabParamList } from '../types';
 import { View, Text } from 'react-native';
 
 const Tab = createBottomTabNavigator<MainTabParamList>();
 
-// Placeholder screens for now
-function CourseScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Course Screen - Coming Soon</Text>
-    </View>
-  );
-}
-
+// Placeholder screens for Progress and Profile
 function ProgressScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Progress Screen - Coming Soon</Text>
+      <Text>Progress Dashboard - Coming Soon</Text>
     </View>
   );
 }
@@ -38,68 +31,60 @@ export default function MainNavigator() {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: Colors.primary,
-        tabBarInactiveTintColor: Colors.textSecondary,
         tabBarStyle: {
           backgroundColor: Colors.surface,
           borderTopColor: Colors.border,
           borderTopWidth: 1,
-          paddingTop: 8,
+          height: 88,
           paddingBottom: 8,
-          height: 60,
+          paddingTop: 8,
         },
         tabBarLabelStyle: {
           fontSize: Typography.sizes.small,
           fontWeight: Typography.weights.medium,
           marginTop: 4,
         },
+        tabBarActiveTintColor: Colors.primary,
+        tabBarInactiveTintColor: Colors.textSecondary,
       }}
     >
-      <Tab.Screen 
-        name="Home" 
-        component={HomeScreen}
+      <Tab.Screen
+        name="Home"
+        component={HomeNavigator}
         options={{
           tabBarLabel: 'AI Coach',
-          tabBarIcon: ({ focused }) => (
-            <Text Style={{ fontSize: 20 }}>
-              {focused ? '🤖' : '🤖'}
-            </Text>
+          tabBarIcon: ({ color, size }) => (
+            <Text style={{ fontSize: 24 }}>🤖</Text>
           ),
         }}
       />
-      <Tab.Screen 
-        name="Course" 
-        component={CourseScreen}
+      <Tab.Screen
+        name="Course"
+        component={CourseNavigator}
         options={{
           tabBarLabel: 'Course',
-          tabBarIcon: ({ focused }) => (
-            <Text style={{ fontSize: 20 }}>
-              {focused ? '📚' : '📖'}
-            </Text>
+          tabBarIcon: ({ color, size }) => (
+            <Text style={{ fontSize: 24 }}>📚</Text>
           ),
         }}
       />
-      <Tab.Screen 
-        name="Progress" 
+      <Tab.Screen
+        name="Progress"
         component={ProgressScreen}
         options={{
           tabBarLabel: 'Progress',
-          tabBarIcon: ({ focused }) => (
-            <Text style={{ fontSize: 20 }}>
-              {focused ? '📊' : '📈'}
-            </Text>
+          tabBarIcon: ({ color, size }) => (
+            <Text style={{ fontSize: 24 }}>📊</Text>
           ),
         }}
       />
-      <Tab.Screen 
-        name="Profile" 
+      <Tab.Screen
+        name="Profile"
         component={ProfileScreen}
         options={{
           tabBarLabel: 'Profile',
-          tabBarIcon: ({ focused }) => (
-            <Text style={{ fontSize: 20 }}>
-              {focused ? '👤' : '👥'}
-            </Text>
+          tabBarIcon: ({ color, size }) => (
+            <Text style={{ fontSize: 24 }}>👤</Text>
           ),
         }}
       />
