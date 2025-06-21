@@ -1,22 +1,15 @@
 // src/navigation/MainNavigator.tsx
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeScreen from '../screens/home/HomeScreen';
+import HomeNavigator from './HomeNavigator';
+import CourseNavigator from './CourseNavigator';
 import { Colors, Typography } from '../constants/Colors';
 import { MainTabParamList } from '../types';
 import { View, Text } from 'react-native';
 
 const Tab = createBottomTabNavigator<MainTabParamList>();
 
-// Placeholder screens for now
-function CourseScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Course Screen - Coming Soon</Text>
-    </View>
-  );
-}
-
+// Temporary placeholders
 function ProgressScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -55,54 +48,49 @@ export default function MainNavigator() {
         },
       }}
     >
-      <Tab.Screen 
-        name="Home" 
-        component={HomeScreen}
+      <Tab.Screen
+        name="Home"
+        component={HomeNavigator}
         options={{
-          tabBarLabel: 'AI Coach',
+          tabBarLabel: 'Home',
           tabBarIcon: ({ focused }) => (
-            <Text Style={{ fontSize: 20 }}>
-              {focused ? '🤖' : '🤖'}
-            </Text>
+            <Text style={{ fontSize: 20 }}>{focused ? '🏠' : '🏠'}</Text>
           ),
         }}
       />
-      <Tab.Screen 
-        name="Course" 
-        component={CourseScreen}
+
+      <Tab.Screen
+        name="Course"
+        component={CourseNavigator}
         options={{
           tabBarLabel: 'Course',
           tabBarIcon: ({ focused }) => (
-            <Text style={{ fontSize: 20 }}>
-              {focused ? '📚' : '📖'}
-            </Text>
+            <Text style={{ fontSize: 20 }}>{focused ? '📚' : '📖'}</Text>
           ),
         }}
       />
-      <Tab.Screen 
-        name="Progress" 
+
+      <Tab.Screen
+        name="Progress"
         component={ProgressScreen}
         options={{
           tabBarLabel: 'Progress',
           tabBarIcon: ({ focused }) => (
-            <Text style={{ fontSize: 20 }}>
-              {focused ? '📊' : '📈'}
-            </Text>
+            <Text style={{ fontSize: 20 }}>{focused ? '📊' : '📈'}</Text>
           ),
         }}
       />
-      <Tab.Screen 
-        name="Profile" 
+
+      <Tab.Screen
+        name="Profile"
         component={ProfileScreen}
         options={{
           tabBarLabel: 'Profile',
           tabBarIcon: ({ focused }) => (
-            <Text style={{ fontSize: 20 }}>
-              {focused ? '👤' : '👥'}
-            </Text>
+            <Text style={{ fontSize: 20 }}>{focused ? '👤' : '👥'}</Text>
           ),
         }}
       />
     </Tab.Navigator>
   );
-}// testing SSH push
+}

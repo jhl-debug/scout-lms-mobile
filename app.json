@@ -24,6 +24,18 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "6bbb43fe-115c-4054-8351-8e1c9408231b"
+      }
+    },
+    "owner": "tech_stack_solentra_care",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/6bbb43fe-115c-4054-8351-8e1c9408231b"
     }
   }
 }

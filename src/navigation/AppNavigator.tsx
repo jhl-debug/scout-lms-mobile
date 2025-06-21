@@ -3,8 +3,8 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useAuth } from '../hooks/useAuth';
-import AuthNavigator from './AuthNavigator';
 import MainNavigator from './MainNavigator';
+import Module1FreeNavigator from './Module1FreeNavigator';
 import { View, Text, StyleSheet } from 'react-native';
 import { Colors, Typography } from '../constants/Colors';
 
@@ -35,8 +35,8 @@ export default function AppNavigator() {
           // User is signed in, show main app
           <Stack.Screen name="Main" component={MainNavigator} />
         ) : (
-          // User is not signed in, show auth screens
-          <Stack.Screen name="Auth" component={AuthNavigator} />
+          // User is not signed in, show free Module 1 experience
+          <Stack.Screen name="FreeExperience" component={Module1FreeNavigator} />
         )}
       </Stack.Navigator>
     </NavigationContainer>
@@ -48,17 +48,16 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: Colors.primary,
+    backgroundColor: Colors.background,
   },
   loadingText: {
-    fontSize: Typography.sizes.xxlarge,
+    fontSize: Typography.sizes.xlarge,
     fontWeight: Typography.weights.bold,
-    color: Colors.surface,
+    color: Colors.primary,
     marginBottom: 8,
   },
   loadingSubtext: {
     fontSize: Typography.sizes.medium,
-    color: Colors.surface,
-    opacity: 0.8,
+    color: Colors.textSecondary,
   },
 });

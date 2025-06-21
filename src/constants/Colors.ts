@@ -7,6 +7,7 @@ export const Colors = {
   
   // Supportive colors
   success: '#7ED321',      // Growth, hope - for positive feedback
+  successLight: '#E8F5E8', // Light success background
   warning: '#F5A623',      // Gentle attention - not alarming
   error: '#D0021B',        // Used sparingly - for real errors only
   
@@ -16,6 +17,7 @@ export const Colors = {
   border: '#E1E1E1',       // Subtle borders and dividers
   
   // Text colors
+  text: '#2C2C2E',            // Alias for main text (consistency)
   textPrimary: '#2C2C2E',     // Main text color
   textSecondary: '#8E8E93',   // Secondary text, labels
   textTertiary: '#C7C7CC',    // Placeholder text, disabled states
@@ -27,6 +29,14 @@ export const Colors = {
 };
 
 export const Spacing = {
+  // New naming convention (used in your screens)
+  xsmall: 4,
+  small: 8,
+  medium: 16,
+  large: 24,
+  xlarge: 32,
+  xxlarge: 48,
+  // Original naming (keep for backward compatibility)
   xs: 4,
   sm: 8,
   md: 16,
@@ -37,6 +47,7 @@ export const Spacing = {
 
 export const Typography = {
   sizes: {
+    xsmall: 12,      // Added missing size
     small: 14,
     medium: 16,
     large: 18,
