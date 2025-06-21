@@ -1,0 +1,144 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: AI Assistant <assistant@openai.com>
+Date: Fri, 20 Jun 2025 21:00:00 +0000
+Subject: [PATCH] Scaffold CoursePreviewScreen + components
+
+---
+ screens/CoursePreviewScreen.tsx                                | 33 +++++++++++++++++++++++++++++++
+ components/HeroSection.tsx                                     | 22 ++++++++++++++++++++
+ components/ModuleCard.tsx                                      | 30 +++++++++++++++++++++++++++++
+ components/StickyBanner.tsx                                    | 20 ++++++++++++++++++
+ components/InstructorBioBlock.tsx                              | 20 ++++++++++++++++++
+ components/TestimonialCarousel.tsx                             | 24 ++++++++++++++++++++++
+ 6 files changed, 149 insertions(+)
+ create mode 100644 screens/CoursePreviewScreen.tsx
+ create mode 100644 components/HeroSection.tsx
+ create mode 100644 components/ModuleCard.tsx
+ create mode 100644 components/StickyBanner.tsx
+ create mode 100644 components/InstructorBioBlock.tsx
+ create mode 100644 components/TestimonialCarousel.tsx
+
+diff --git a/screens/CoursePreviewScreen.tsx b/screens/CoursePreviewScreen.tsx
+new file mode 100644
+index 0000000..abcd123
+--- /dev/null
++++ b/screens/CoursePreviewScreen.tsx
+@@ -0,0 +1,33 @@
++import React from 'react';
++import { View, ScrollView } from 'react-native';
++import { HeroSection } from '../components/HeroSection';
++import { ModuleCard } from '../components/ModuleCard';
++import { StickyBanner } from '../components/StickyBanner';
++import { InstructorBioBlock } from '../components/InstructorBioBlock';
++import { TestimonialCarousel } from '../components/TestimonialCarousel';
++
++// Dummy data
++const MODULE_TITLES = {
++  1: "Understanding Your Child's Learning Style",
++  2: "Building Confidence & Motivation",
++  3: "Effective Communication Strategies",
++  4: "Creating Supportive Learning Environment",
++  5: "Long-term Success Strategies",
++};
++const MODULE_DURATIONS = {
++  1: "15 min",
++  2: "18 min",
++  3: "22 min",
++  4: "20 min",
++  5: "25 min",
++};
++
++export function CoursePreviewScreen({ navigation }) {
++  return (
++    <View className="flex-1 bg-white">
++      <ScrollView contentContainerStyle={{ paddingBottom: 80 }}>
++        <HeroSection
++          badgeText="FREE PREVIEW"
++          title="Parent Empowerment Course"
++          subtitle="Transform your child's learning journey in 5 powerful modules"
++          onPrimaryPress={() => navigation.navigate('PreviewModuleDetail')}
++        />
++
++        <View className="px-4 py-6">
++          {[1,2,3,4,5].map((num) => (
++            <ModuleCard
++              key={num}
++              number={num}
++              title={MODULE_TITLES[num]}
++              duration={MODULE_DURATIONS[num]}
++              locked={num > 1}
++              onPress={() =>
++                num === 1
++                  ? navigation.navigate('PreviewModuleDetail')
++                  : navigation.navigate('UpsellModal')
++              }
++            />
++          ))}
++        </View>
++
++        <InstructorBioBlock />
++        <TestimonialCarousel />
++      </ScrollView>
++      <StickyBanner onPress={() => navigation.navigate('SignUp')} />
++    </View>
++  );
++}
+diff --git a/components/HeroSection.tsx b/components/HeroSection.tsx
+new file mode 100644
+index 0000000..ef45678
+--- /dev/null
++++ b/components/HeroSection.tsx
+@@ -0,0 +1,22 @@
++import React from 'react';
++import { View, Text, Pressable } from 'react-native';
++
++export function HeroSection({ badgeText, title, subtitle, onPrimaryPress }) {
++  return (
++    <View className="p-6 bg-gradient-to-r from-blue-500 to-purple-600">
++      <Text className="text-sm text-white opacity-80 mb-2">{badgeText}</Text>
++      <Text className="text-3xl text-white font-bold mb-2">{title}</Text>
++      <Text className="text-base text-white opacity-90 mb-4">{subtitle}</Text>
++      <Pressable
++        onPress={onPrimaryPress}
++        className="bg-white py-3 rounded-full items-center"
++      >
++        <Text className="text-blue-600 font-semibold">Start Free Preview</Text>
++      </Pressable>
++    </View>
++  );
++}
+diff --git a/components/ModuleCard.tsx b/components/ModuleCard.tsx
+new file mode 100644
+index 0000000..1234abc
+--- /dev/null
++++ b/components/ModuleCard.tsx
+@@ -0,0 +1,30 @@
++import React from 'react';
++import { View, Text, Pressable } from 'react-native';
++
++export function ModuleCard({ number, title, duration, locked, onPress }) {
++  return (
++    <Pressable
++      onPress={onPress}
++      className={`flex-row items-center p-4 mb-3 border rounded-lg ${
++        locked ? 'opacity-60 bg-gray-100 border-gray-200' : 'border-gray-300'
++      }`}
++    >
++      <View
++        className={`w-10 h-10 rounded-full items-center justify-center mr-3 ${
++          locked ? 'bg-gray-400' : 'bg-blue-600'
++        }`}
++      >
++        <Text className="text-white font-semibold">{number}</Text>
++      </View>
++      <View className="flex-1">
++        <Text className="font-semibold text-base">{title}</Text>
++        <Text className="text-sm text-gray-600">{duration}</Text>
++      </View>
++      {locked && <Text className="text-gray-400">🔒</Text>}
++    </Pressable>
++  );
++}
+diff --git a/
+
+
