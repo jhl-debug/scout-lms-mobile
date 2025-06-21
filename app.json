@@ -29,8 +29,8 @@
       "eas": {
         "projectId": "6bbb43fe-115c-4054-8351-8e1c9408231b"
       },
-      "EXPO_PUBLIC_SUPABASE_URL": "https://<your-project>.supabase.co",
-      "EXPO_PUBLIC_SUPABASE_ANON_KEY": "<your-anon-key>"
+      "EXPO_PUBLIC_SUPABASE_URL": "https://rneeeqlkgvhitxkcyjbi.supabase.co",
+      "EXPO_PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJuZWVlcWxrZ3ZoaXR4a2N5amJpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg2NjA2MTEsImV4cCI6MjA2NDIzNjYxMX0.nMMQbyNbkQVfBH5HYiqCvDDEQY344rP1a-VnpDRqea4"
     },
     "owner": "tech_stack_solentra_care",
     "runtimeVersion": {

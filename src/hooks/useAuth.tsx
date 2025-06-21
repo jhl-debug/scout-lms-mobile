@@ -57,11 +57,31 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }
 
   const signUp = async (email: string, password: string) => {
-    const { data, error } = await supabase.auth.signUp({ email, password })
-    setSession(data.session)
-    setUser(data.session?.user ?? null)
-    return { error, session: data.session }
-  }
+    try {
+      const { data, error } = await supabase.auth.signUp({ 
+        email, 
+        password,
+        options: {
+          // Optional: Skip email confirmation for development
+          // emailRedirectTo: window.location.origin
+        }
+      })
+      
+      if (error) {
+        console.error('Signup error:', error)
+        return { error, session: null }
+      }
+      
+      // Note: By default, user needs to confirm email before session is created
+      console.log('Signup successful:', data)
+      setSession(data.session)
+      setUser(data.user ?? null)
+      return { error: null, session: data.session }
+    } catch (err) {
+      console.error('Unexpected signup error:', err)
+      return { error: err as Error, session: null }
+    }
+  }  
 
   const signOut = async () => {
     const { error } = await supabase.auth.signOut()
