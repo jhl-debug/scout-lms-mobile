@@ -28,7 +28,9 @@
     "extra": {
       "eas": {
         "projectId": "6bbb43fe-115c-4054-8351-8e1c9408231b"
-      }
+      },
+      "EXPO_PUBLIC_SUPABASE_URL": "https://<your-project>.supabase.co",
+      "EXPO_PUBLIC_SUPABASE_ANON_KEY": "<your-anon-key>"
     },
     "owner": "tech_stack_solentra_care",
     "runtimeVersion": {

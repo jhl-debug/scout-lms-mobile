@@ -60,10 +60,10 @@ export default function MainNavigator() {
       />
 
       <Tab.Screen
-        name="Course"
+        name="Courses"
         component={CourseNavigator}
         options={{
-          tabBarLabel: 'Course',
+          tabBarLabel: 'Courses',
           tabBarIcon: ({ focused }) => (
             <Text style={{ fontSize: 20 }}>{focused ? '📚' : '📖'}</Text>
           ),
